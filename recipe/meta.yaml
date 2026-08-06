@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/g/{{ name }}/gviz_api-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/g/{{ name }}/{{ name | replace("-", "_") }}-{{ version }}.tar.gz
   sha256: 846692dd8cc73224fc31b18e41589bd934e1cc05090c6576af4b4b26c2e71b90
 
 build:
