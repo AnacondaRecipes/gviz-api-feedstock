@@ -1,0 +1,46 @@
+{% set name = "gviz-api" %}
+{% set version = "1.10.0" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.org/packages/source/g/{{ name }}/{{ name | replace("-", "_") }}-{{ version }}.tar.gz
+  sha256: 846692dd8cc73224fc31b18e41589bd934e1cc05090c6576af4b4b26c2e71b90
+
+build:
+  number: 0
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python
+    - pip
+    - setuptools
+  run:
+    - python
+    - six
+
+test:
+  requires:
+    - pip
+  imports:
+    - gviz_api
+  commands:
+    - pip check
+
+about:
+  home: https://github.com/google/google-visualization-python
+  license: Apache-2.0
+  license_family: Apache
+  # upstream sdist ships no license file; recipe/LICENSE is the upstream repo's COPYRIGHT (Apache-2.0)
+  license_file: LICENSE
+  summary: Python API for Google Visualization
+  description: |
+    This library provides a Python API for creating Google Visualization
+    data tables (JSON, JS code, or CSV) that can be consumed by the Google
+    Visualization API and by tools built on it such as the XProf / TensorBoard
+    profile plugin.
+  doc_url: https://github.com/google/google-visualization-python
+  dev_url: https://github.com/google/google-visualization-python
